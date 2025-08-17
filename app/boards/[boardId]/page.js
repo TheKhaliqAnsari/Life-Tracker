@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -306,9 +306,9 @@ export default function BoardPage() {
       }
     }
     checkAuth();
-  }, [boardId, router]);
+  }, [boardId, router, fetchBoard, fetchTasks]);
 
-  async function fetchBoard() {
+  const fetchBoard = useCallback(async () => {
     try {
       const res = await fetch("/api/boards");
       const data = await res.json().catch(() => ({}));
@@ -334,9 +334,9 @@ export default function BoardPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [boardId]);
 
-  async function fetchTasks() {
+  const fetchTasks = useCallback(async () => {
     try {
       const res = await fetch(`/api/tasks/${boardId}`);
       const data = await res.json().catch(() => ({}));
@@ -352,7 +352,7 @@ export default function BoardPage() {
       setError(msg);
       addToast({ type: "error", message: msg });
     }
-  }
+  }, [boardId, addToast]);
 
   async function createTask(e) {
     e.preventDefault();

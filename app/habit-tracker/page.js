@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -37,7 +37,7 @@ export default function HabitTrackerPage() {
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [checkAuth]);
 
   useEffect(() => {
     if (filterHabitId) {
@@ -47,7 +47,7 @@ export default function HabitTrackerPage() {
     }
   }, [filterHabitId]);
 
-  async function checkAuth() {
+  const checkAuth = useCallback(async () => {
     try {
       const res = await fetch('/api/auth/me');
       if (!res.ok) {
@@ -59,7 +59,7 @@ export default function HabitTrackerPage() {
     } catch (error) {
       router.push('/login');
     }
-  }
+  }, [router]);
 
   async function fetchHabits() {
     try {

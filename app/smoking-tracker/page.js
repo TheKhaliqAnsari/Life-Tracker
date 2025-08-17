@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -19,15 +19,15 @@ export default function SmokingTrackerPage() {
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [checkAuth]);
 
   useEffect(() => {
     if (user) {
       fetchTrackingData();
     }
-  }, [user, days]);
+  }, [user, days, fetchTrackingData]);
 
-  async function checkAuth() {
+  const checkAuth = useCallback(async () => {
     try {
       const res = await fetch("/api/auth/me");
       const data = await res.json().catch(() => ({}));
@@ -39,9 +39,9 @@ export default function SmokingTrackerPage() {
     } catch {
       router.push("/login");
     }
-  }
+  }, [router]);
 
-  async function fetchTrackingData() {
+  const fetchTrackingData = useCallback(async () => {
     try {
       const res = await fetch(`/api/smoking-tracker?days=${days}`);
       const data = await res.json().catch(() => ({}));
@@ -57,7 +57,7 @@ export default function SmokingTrackerPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [days, addToast]);
 
   async function toggleDay(date, newSmokeFreeStatus, cigarettes = 0) {
     const payload = {
@@ -413,7 +413,7 @@ export default function SmokingTrackerPage() {
                   Amazing! {stats.currentStreak} days strong!
                 </h3>
                 <p className="text-gray-300">
-                  You're building an incredible healthy habit. Keep it up!
+                  You&apos;re building an incredible healthy habit. Keep it up!
                 </p>
               </div>
             ) : stats.currentStreak > 0 ? (
@@ -423,7 +423,7 @@ export default function SmokingTrackerPage() {
                   Great start! {stats.currentStreak} day{stats.currentStreak !== 1 ? 's' : ''} smoke-free!
                 </h3>
                 <p className="text-gray-300">
-                  Every day counts. You're on the right path!
+                  Every day counts. You&apos;re on the right path!
                 </p>
               </div>
             ) : (

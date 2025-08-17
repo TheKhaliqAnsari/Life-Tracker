@@ -344,7 +344,7 @@ export default function HealthTrackerPage() {
             transition={{ delay: 0.2 }}
             className="bg-gray-800 rounded-xl p-6 border border-gray-700"
           >
-            <h3 className="text-sm font-medium text-gray-400 mb-2">Today's Calories</h3>
+            <h3 className="text-sm font-medium text-gray-400 mb-2">Today&apos;s Calories</h3>
             <p className="text-2xl font-bold text-white">{totalCaloriesConsumed}</p>
             <p className="text-sm text-gray-400 mt-1">Consumed</p>
           </motion.div>
@@ -569,7 +569,7 @@ export default function HealthTrackerPage() {
                   </ResponsiveContainer>
                 </div>
                 
-                <h3 className="font-medium text-white">Today's Exercise:</h3>
+                <h3 className="font-medium text-white">Today&apos;s Exercise:</h3>
                 {todayExercise.map((entry, index) => (
                   <div key={index} className="flex justify-between items-center p-3 bg-gray-950 rounded-md">
                     <span className="text-white">
@@ -666,7 +666,7 @@ export default function HealthTrackerPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-3">Today's Nutrition</h3>
+              <h3 className="text-lg font-semibold mb-3">Today&apos;s Nutrition</h3>
               {todayCalories.length > 0 ? (
                 <div className="space-y-4">
                   {todayCalories.map((meal, index) => (
@@ -767,7 +767,7 @@ export default function HealthTrackerPage() {
               <p className="text-2xl font-bold text-green-400">
                 {todayExercise.reduce((sum, ex) => sum + ex.minutes, 0)} min
               </p>
-              <p className="text-sm text-gray-400 mt-1">Today's total</p>
+              <p className="text-sm text-gray-400 mt-1">Today&apos;s total</p>
               <button
                 onClick={() => openGoalModal("exercise")}
                 className="mt-2 px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded text-xs transition-colors"

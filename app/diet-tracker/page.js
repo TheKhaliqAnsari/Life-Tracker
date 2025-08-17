@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 export default function DietTracker() {
@@ -79,7 +79,7 @@ export default function DietTracker() {
     }
   }
 
-  async function fetchMeals() {
+  const fetchMeals = useCallback(async () => {
     try {
       const response = await fetch(`/api/diet-entries?date=${selectedDate}`);
       if (response.ok) {
@@ -89,11 +89,11 @@ export default function DietTracker() {
     } catch (error) {
       console.error('Error fetching meals:', error);
     }
-  }
+  }, [selectedDate]);
 
   useEffect(() => {
     fetchMeals();
-  }, [selectedDate]);
+  }, [selectedDate, fetchMeals]);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">

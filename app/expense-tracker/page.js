@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -72,37 +72,36 @@ export default function ExpenseTrackerPage() {
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [checkAuth]);
 
-  async function checkAuth() {
+  const checkAuth = useCallback(async () => {
     try {
       const res = await fetch('/api/auth/me');
       if (!res.ok) {
         router.push('/login');
         return;
       }
-      await fetchAllData();
+      // Call fetchAllData directly to avoid circular dependency
+      try {
+        setLoading(true);
+        await Promise.all([
+          fetchExpenses(),
+          fetchIncomes(),
+          fetchLendings(),
+          fetchBorrowings(),
+          fetchInvestments()
+        ]);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
     } catch (error) {
       router.push('/login');
     }
-  }
+  }, [router]);
 
-  async function fetchAllData() {
-    try {
-      setLoading(true);
-      await Promise.all([
-        fetchExpenses(),
-        fetchIncomes(),
-        fetchLendings(),
-        fetchBorrowings(),
-        fetchInvestments()
-      ]);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      setLoading(false);
-    }
-  }
+
 
   async function fetchExpenses() {
     try {
