@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "id": "78e40fa8-3430-46d2-a07e-61019c7af489",
+      "username": "thekhaliqansari@gmail.com",
+      "password": "$2b$10$5glrxdbDBRHEfLKUhCBbY.NXhwhzzLq.7iFMZNdp93lrcUpONH4gu"
+    },
+    {
+      "id": "954fc673-941f-4a3f-8f1c-f20a8ad3bf35",
+      "username": "khaliq",
+      "password": "$2b$10$xeT30E8I/lH4faGEQ4uaLe49QGmqqFK8CeRySpu7PQRGw9Le62qtG"
+    },
+    {
+      "id": "1d789f95-4dff-4ba8-8469-324fc752c1bf",
+      "username": "thekhaliqansari",
+      "password": "$2b$10$MyRItbUMMnZMfFMDDDCnbeWvRpYCMsyEQfR1DcwwDkBqN93U2iBkS"
+    },
+    {
+      "id": "003247b4-2aaf-4c54-8639-205cffcaa923",
+      "username": "khaliq3211",
+      "password": "$2b$10$qDQ7PDpkcXU27GnLni1j2.2gcj8SO3ZQOytQhXUDIw0aW/Y1YTsUW"
+    }
+  ],
+  "boards": [
+    {
+      "id": "8444fd3e-c590-4de0-ae09-1eeb862dac3b",
+      "userId": "78e40fa8-3430-46d2-a07e-61019c7af489",
+      "name": "tasde",
+      "createdAt": "2025-08-09T07:44:41.546Z"
+    },
+    {
+      "id": "7df83a4b-efc1-43ae-bebc-697d2af9af5b",
+      "userId": "954fc673-941f-4a3f-8f1c-f20a8ad3bf35",
+      "name": "Data Structures and algorithms",
+      "createdAt": "2025-08-09T13:57:45.530Z"
+    },
+    {
+      "id": "0ec78bb7-6179-409c-92f7-d0d853e6e2e4",
+      "userId": "954fc673-941f-4a3f-8f1c-f20a8ad3bf35",
+      "name": "Backend developement with Java",
+      "createdAt": "2025-08-09T13:57:57.334Z"
+    },
+    {
+      "id": "39aa1e72-0ebb-42d1-a50f-e791100b654f",
+      "userId": "1d789f95-4dff-4ba8-8469-324fc752c1bf",
+      "name": "Learning DSA",
+      "createdAt": "2025-08-09T13:59:23.703Z"
+    },
+    {
+      "id": "1536b9ab-dd6d-4949-b027-f3d21bdce89e",
+      "userId": "1d789f95-4dff-4ba8-8469-324fc752c1bf",
+      "name": "Learning backend with Java",
+      "createdAt": "2025-08-09T13:59:34.543Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "20287582-ad5f-4a9a-beb5-8452f568326f",
+      "boardId": "1536b9ab-dd6d-4949-b027-f3d21bdce89e",
+      "title": "Learn arrays",
+      "description": "dsa oractuce",
+      "status": "pending",
+      "priority": "high",
+      "dueDate": "2025-08-21",
+      "createdAt": "2025-08-09T14:06:21.606Z"
+    },
+    {
+      "id": "f96a81a0-ace6-43ea-aabc-f53b6f183ab0",
+      "boardId": "8444fd3e-c590-4de0-ae09-1eeb862dac3b",
+      "title": "asndajsdj",
+      "description": "asdljasld",
+      "status": "pending",
+      "dueDate": "2025-08-19T00:00:00.000Z",
+      "createdAt": "2025-08-09T07:51:39.763Z"
+    },
+    {
+      "id": "ec6a5400-d20d-4e08-b0ee-387eec17102f",
+      "boardId": "8444fd3e-c590-4de0-ae09-1eeb862dac3b",
+      "title": "dasdjas;lkda",
+      "description": "ajdalsjdsa;lk",
+      "status": "completed",
+      "dueDate": "2025-08-12T00:00:00.000Z",
+      "createdAt": "2025-08-09T07:51:00.159Z"
+    }
+  ]
+}
